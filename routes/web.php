@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,7 +50,7 @@ Route::get('/', function () {
     //Fetch all users
     // $users = DB::table('users')->get();
     //$users = DB::table('users')->where('id', 7)->first();
-    $users = DB::table('users')->find(7);
+    // $users = DB::table('users')->find(7);
     //$users = DB::table('users')->where('id', 1)->get();
 
     //Insert Data
@@ -65,7 +66,33 @@ Route::get('/', function () {
     // Delete a user
     // $user = DB::table('users')->where('id', 5)->delete();
 
-    dd($users);
+    /**
+     * Eloquent
+     */
+    //
+    //$user = User::where('id', 7)->first();
+    $user = User::all();
+    //Create new user
+    // $user = User::create([
+    //     'name' => 'Leopold',
+    //     'email' => 'leo@gmail.com',
+    //     'password' => 'password',
+    // ]);
+    // $user contains the data of the new created user
+
+    //$user = User::where('id', 7)->first();
+    // $user = User::find(7);
+    // $user->update([
+    //     'email' => 'burgdie03@gmail.com',
+    // ]);
+
+    /**
+     * Delete
+     */
+    //$user = User::find(7)->delete()
+    // $user = User::find(8);
+    // $user->delete();
+    dd($user);
 });
 
 Route::get('/dashboard', function () {
