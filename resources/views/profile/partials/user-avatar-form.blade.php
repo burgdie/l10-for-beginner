@@ -9,7 +9,12 @@
         </p>
     </header>
 
-    <form method="post" action="/profile/avatar">
+    <form method="post" action="{{ route('profile.avatar') }}">
+        {{-- Method spoothing to provide the requested patch request --}}
+        @method('patch')
+        @csrf
+        {{-- <input type="hidden" name="_method" value="patch"> --}}
+        {{-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> --}}
         <div>
             <x-input-label for="name" value="Avatar" />
             <x-text-input id="avatar" name="avatar" type="file" class="mt-1 block w-full" :value="old('avatar', $user->avatar)" required
